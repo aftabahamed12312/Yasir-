@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Think. Believe. Grow. | Yuwa Sarathi</title>
+<meta name="description" content="Yuwa Sarathi trainer's message: Imagination, Confidence, Morale and Positive Attitude.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Noto+Sans+Devanagari:wght@500;700&display=swap">
+<style>
+:root{--navy:#152747;--navy2:#21436e;--teal:#16918c;--gold:#f2b23a;--bg:#f1f6f8;--muted:#4d5d78;--line:#dbe4ea;--red:#a0423a}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:Sora,system-ui,sans-serif;color:var(--navy);background:var(--navy);overflow:hidden}
+.dv{font-family:"Noto Sans Devanagari",Sora,sans-serif}
+#deck{display:flex;height:100dvh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none}
+#deck::-webkit-scrollbar{display:none}
+.s{flex:0 0 100vw;height:100dvh;scroll-snap-align:start;display:grid;grid-template-columns:1.35fr 1fr;align-items:center;gap:3vw;padding:9vh 7vw 11vh;background:var(--bg);position:relative;overflow:hidden}
+.s.dark{background:var(--navy);color:#fff}
+.s.band{background:#e3f3f1}
+.s.dark .art{filter:none}
+.art{display:flex;justify-content:center;align-items:center;height:100%;min-height:0}
+.art svg{max-height:100%;max-width:100%;width:100%;height:auto}
+.s h1{font-size:clamp(2.4rem,9vh,5.8rem);line-height:1.04;margin:1vh 0 2.5vh;font-weight:800}
+.s h2{font-size:clamp(1.5rem,5.2vh,2.7rem);margin:0 0 1vh;line-height:1.15;font-weight:800}
+.org{color:var(--gold);font-weight:600;font-size:clamp(.8rem,2vh,1rem)}
+.lead{color:var(--muted);font-size:clamp(.85rem,2.2vh,1.05rem);margin:0 0 3vh;padding-bottom:2vh;border-bottom:4px solid var(--teal);width:fit-content;max-width:100%}
+.pills{font-size:clamp(.9rem,2.6vh,1.25rem);opacity:.92}
+.np{font-size:clamp(1.1rem,3.4vh,1.7rem);font-weight:700;margin-top:4vh}
+.sub{opacity:.7;margin-top:1vh;font-size:clamp(.8rem,2vh,1rem)}
+.grid{display:grid;gap:1.6vh 1.2vw;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:2.4vh 1.5vw;display:flex;flex-direction:column;gap:.8vh;box-shadow:0 10px 24px -14px rgba(21,39,71,.35)}
+.card h3{margin:0;font-size:clamp(1rem,2.6vh,1.3rem);display:flex;align-items:center;gap:10px}
+.n{background:var(--teal);color:#fff;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;font-size:.75em;flex:none}
+.card p{margin:0;color:var(--muted);font-size:clamp(.8rem,2vh,.98rem)}
+.tag{margin-top:auto;padding-top:1.5vh;color:var(--teal);font-weight:600;font-size:clamp(.75rem,1.8vh,.9rem)}
+.ask{font-weight:600;font-size:clamp(.95rem,2.6vh,1.25rem);margin:3vh 0 0}
+.quote-big{font-size:clamp(1.5rem,6vh,3rem);font-weight:800;line-height:1.25;margin:0 0 3vh}
+.chip{background:#fff;color:var(--teal);border-radius:16px;padding:2vh 1.6vw;font-weight:600;width:fit-content;max-width:100%;font-size:clamp(.9rem,2.4vh,1.15rem)}
+ul.steps{list-style:none;padding:0;margin:1vh 0 0}
+ul.steps li{padding:1.1vh 0 1.1vh 34px;border-bottom:1px solid var(--line);position:relative;font-size:clamp(.9rem,2.4vh,1.1rem)}
+ul.steps li:before{content:"";position:absolute;left:4px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--teal)}
+ul.steps li:nth-child(even):before{background:var(--gold)}
+.qbox{background:var(--navy);color:#fff;border-radius:28px;padding:3vh 1.8vw;font-weight:600;font-size:clamp(.95rem,2.6vh,1.3rem);margin-top:2vh}
+.qbox small{display:block;color:var(--gold);margin-top:1.5vh;font-size:.7em}
+.card h4{margin:0;font-size:.8rem;letter-spacing:.04em}
+.old h4{color:var(--red)}.new h4{color:var(--teal)}
+.say{font-weight:600;font-size:clamp(.95rem,2.4vh,1.15rem);margin:.6vh 0}
+.act{text-align:center;align-items:center}
+.act h3{color:var(--teal);justify-content:center;letter-spacing:.06em}
+.act p{color:var(--navy);font-weight:600}
+.rem{font-size:clamp(1.4rem,6vh,3rem);font-weight:800;line-height:1.3}
+hr.g{width:90px;border:0;border-top:4px solid var(--teal);margin:3vh 0;margin-left:0}
+.stag{position:absolute;top:3vh;left:7vw;font-weight:600;font-size:.8rem;color:var(--teal)}
+.dark .stag{color:var(--gold)}
+#ui{position:fixed;left:0;right:0;bottom:calc(2vh + env(safe-area-inset-bottom,0px));display:flex;gap:12px;justify-content:center;align-items:center;z-index:5;pointer-events:none}
+#ui>*{pointer-events:auto}
+.arrow{width:42px;height:42px;border-radius:50%;border:0;background:var(--teal);color:#fff;font-size:1.2rem;cursor:pointer}
+.arrow:hover,.arrow:focus-visible{background:var(--gold);color:var(--navy);outline:none}
+#dots{display:flex;gap:8px;background:rgba(21,39,71,.85);padding:10px 14px;border-radius:99px}
+#dots button{width:10px;height:10px;border-radius:50%;border:0;background:#8aa0c0;padding:0;cursor:pointer}
+#dots button.on{background:var(--gold);width:26px;border-radius:6px}
+#count{position:fixed;top:calc(2.5vh + env(safe-area-inset-top,0px));right:5vw;font-size:.8rem;font-weight:600;color:var(--muted);z-index:5}
+@media (orientation:portrait),(max-width:720px){
+ .s{grid-template-columns:1fr;grid-template-rows:auto 1fr;overflow-y:auto;align-items:start;padding:8vh 6vw 14vh}
+ .art{order:-1;height:22vh}
+ .s h1{font-size:2.4rem}
+}
+@media (prefers-reduced-motion:reduce){#deck{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="hills" viewBox="0 0 400 400"><circle cx="200" cy="200" r="120" fill="#f2b23a"/><path d="M0 400V290q90-70 180-20t220-40v170z" fill="#16918c"/><path d="M0 400V330q120-60 220-10t180-20v100z" fill="#21436e"/><circle cx="70" cy="70" r="18" fill="#fff" opacity=".6"/><circle cx="340" cy="90" r="10" fill="#fff" opacity=".6"/></symbol>
+</defs></svg>
+
+<div id="count" aria-live="polite">1 / 8</div>
+<main id="deck">
+
+<section class="s dark" id="home">
+<div><div class="org">Yuwa Sarathi | Trainer's Message</div><h1>Think. Believe.<br>Grow.</h1>
+<div class="pills">Imagination • Confidence • Morale • Positive Attitude</div>
+<div class="np dv">सिकौँ, सोचौँ, आत्मविश्वासका साथ अघि बढौँ।</div><div class="sub dv">सक्षम युवा • सकारात्मक समाज</div></div>
+<div class="art"><svg viewBox="0 0 400 400" role="img" aria-label="Steps leading up to a flag"><circle cx="290" cy="110" r="80" fill="#16918c"/><circle cx="360" cy="215" r="24" fill="#f2b23a"/><circle cx="190" cy="250" r="120" fill="#21436e"/><path d="M50 350h75v-55h75v-55h75v-55h75v-55" stroke="#f2b23a" stroke-width="12" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M350 130V70" stroke="#fff" stroke-width="6"/><path d="M350 70l38 14-38 14z" fill="#f2b23a"/></svg></div>
+</section>
+
+<section class="s band" id="belief">
+<div><p class="quote-big">“If I believe I will fail before I even try, how can I ever discover what I can do?”</p>
+<div class="chip">Our success often begins with the way we think.</div></div>
+<div class="art"><svg viewBox="0 0 400 400" role="img" aria-label="A thinking head with a question mark"><circle cx="200" cy="200" r="150" fill="#fff"/><path d="M130 300v-30q-30-10-30-60 0-90 100-90t100 80q0 35-25 55v45z" fill="#16918c"/><circle cx="215" cy="190" r="48" fill="#f2b23a"/><text x="215" y="212" text-anchor="middle" font-size="64" font-weight="800" fill="#152747" font-family="Sora,sans-serif">?</text></svg></div>
+</section>
+
+<section class="s" id="imagination">
+<div class="stag">1 of 4</div>
+<div><h2>1. Imagination: Learn Beyond the Book</h2><p class="lead">Learning becomes meaningful when students connect ideas to experience.</p>
+<div class="grid">
+<div class="card"><h3><span class="n">1</span>Imagine it</h3><p>Picture the idea in your mind. Connect lessons to real life.</p><div class="tag">Ask: “What could this look like?”</div></div>
+<div class="card"><h3><span class="n">2</span>Explore it</h3><p>Ask questions. Try examples, stories, role-play or drawing.</p><div class="tag">Curiosity makes learning active.</div></div></div></div>
+<div class="art"><svg viewBox="0 0 400 400" role="img" aria-label="Light bulb above an open book"><g stroke="#f2b23a" stroke-width="8" stroke-linecap="round"><path d="M200 20v28M90 60l20 20M310 60l-20 20M50 150h28M322 150h28"/></g><circle cx="200" cy="150" r="82" fill="#f2b23a"/><rect x="168" y="224" width="64" height="40" rx="10" fill="#16918c"/><path d="M60 330q70-30 140 0 70-30 140 0v28q-70-30-140 0-70-30-140 0z" fill="#152747"/><path d="M60 330q70-30 140 0v28q-70-30-140 0z" fill="#21436e"/></svg></div>
+</section>
+
+<section class="s band" id="confidence">
+<div class="stag">2 of 4</div>
+<div><h2>2. Confidence: Believe You Can Learn</h2><p class="lead">Confidence is not knowing everything; it is being willing to try.</p>
+<div class="grid">
+<div class="card"><h3><span class="n">1</span>Start small</h3><p>Ask one question. Share one idea. Try one new task.</p><div class="tag">Small steps build courage.</div></div>
+<div class="card"><h3><span class="n">2</span>Accept mistakes</h3><p>Mistakes are feedback—not proof that you cannot do it.</p><div class="tag">Practice helps you improve.</div></div>
+<div class="card"><h3><span class="n">3</span>Speak up</h3><p>Share your thoughts without waiting to be perfect.</p><div class="tag">Your voice matters.</div></div></div>
+<p class="ask">“What is one small brave thing you can do today?”</p></div>
+<div class="art"><svg viewBox="0 0 400 400" role="img" aria-label="Mountain with a flag on top"><circle cx="320" cy="90" r="46" fill="#f2b23a"/><path d="M10 350L150 130l70 95 50-70 130 195z" fill="#16918c"/><path d="M150 130l-34 52 34-14 30 22z" fill="#fff"/><path d="M150 130V66" stroke="#152747" stroke-width="7"/><path d="M150 68l50 17-50 17z" fill="#f2b23a"/><path d="M10 350h380" stroke="#152747" stroke-width="8"/></svg></div>
+</section>
+
+<section class="s" id="morale">
+<div class="stag">3 of 4</div>
+<div><h2>3. Morale: Rise After a Setback</h2><p class="lead">Your result today does not define your potential tomorrow.</p>
+<h3 style="margin:0">When things go wrong…</h3>
+<ul class="steps"><li>Pause and breathe</li><li>Name what went wrong</li><li>Find one lesson</li><li>Try a new strategy</li><li>Ask for help when needed</li></ul>
+<div class="qbox">“A setback is not the end. It is a chance to learn, adapt, and try again.”<small>Resilience = recover + learn + continue</small></div>
+<p class="ask" style="font-size:clamp(.85rem,2.2vh,1.05rem)">Compare your progress with yesterday’s you—not someone else’s journey.</p></div>
+<div class="art"><svg viewBox="0 0 400 400" role="img" aria-label="Sun rising over hills"><use href="#hills"/><path d="M200 120V60M175 85l25-27 25 27" stroke="#152747" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</section>
+
+<section class="s band" id="attitude">
+<div class="stag">4 of 4</div>
+<div><h2>4. Positive Attitude: Focus on Possibilities</h2><p class="lead">Positive thinking does not ignore problems; it looks for constructive next steps.</p>
+<div class="grid">
+<div class="card old"><h4>INSTEAD OF</h4><div class="say">“I can’t do this.”</div><div class="say">“How can I learn this?”</div></div>
+<div class="card new"><h4>TRY</h4><div class="say">“I failed.”</div><div class="say" style="color:var(--teal)">“What can I learn from this?”</div></div></div>
+<p class="ask">Replace “Why me?” with “What can I do next?”</p>
+<p style="color:var(--muted);font-size:clamp(.8rem,2vh,.95rem);margin:1vh 0 0">Notice the problem • Believe change is possible • Take one useful action</p></div>
+<div class="art"><svg viewBox="0 0 400 400" role="img" aria-label="A seedling growing toward the sun"><circle cx="310" cy="80" r="50" fill="#f2b23a"/><path d="M200 340V200" stroke="#152747" stroke-width="10" stroke-linecap="round"/><path d="M200 230q-90 0-100-80 80-10 100 80z" fill="#16918c"/><path d="M200 200q10-100 100-100 0 90-100 100z" fill="#16918c"/><path d="M100 340q100-50 200 0v30H100z" fill="#21436e"/></svg></div>
+</section>
+
+<section class="s" id="action">
+<div><h2>Turn the Message Into Action</h2><p class="lead">A 30-second reflection for every student.</p>
+<div class="grid">
+<div class="card act"><h3>THINK</h3><p>What is one thing I want to improve?</p></div>
+<div class="card act"><h3>CHOOSE</h3><p>What small step can I take today?</p></div>
+<div class="card act"><h3>ACT</h3><p>When and how will I practice it?</p></div></div>
+<p class="ask">One small action, repeated consistently, can build a powerful habit.</p></div>
+<div class="art"><svg viewBox="0 0 400 400" role="img" aria-label="Three rising steps"><rect x="40" y="260" width="95" height="100" rx="12" fill="#21436e"/><rect x="150" y="190" width="95" height="170" rx="12" fill="#16918c"/><rect x="260" y="110" width="95" height="250" rx="12" fill="#f2b23a"/><circle cx="87" cy="225" r="20" fill="#152747"/><circle cx="197" cy="155" r="20" fill="#152747"/><circle cx="307" cy="75" r="20" fill="#152747"/></svg></div>
+</section>
+
+<section class="s dark" id="remember">
+<div><div class="org">Remember</div><div class="rem">Imagine boldly.<br>Try courageously.<br>Rise after setbacks.<br>Choose a positive next step.</div><hr class="g">
+<div class="np dv" style="margin-top:0">सिकौँ, सोचौँ, आत्मविश्वासका साथ अघि बढौँ।</div>
+<div class="sub dv">Yuwa Sarathi • सक्षम युवा, सकारात्मक समाज</div></div>
+<div class="art"><svg viewBox="0 0 400 400" role="img" aria-label="Sunrise over hills"><use href="#hills"/></svg></div>
+</section>
+</main>
+
+<div id="ui"><button class="arrow" id="prev" aria-label="Previous slide">&#8592;</button><div id="dots"></div><button class="arrow" id="next" aria-label="Next slide">&#8594;</button></div>
+
+<script>
+(function(){
+var deck=document.getElementById('deck'),sl=[].slice.call(deck.children),dots=document.getElementById('dots'),cnt=document.getElementById('count');
+sl.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Go to slide '+(i+1));b.onclick=function(){go(i)};dots.appendChild(b)});
+function cur(){return Math.round(deck.scrollLeft/deck.clientWidth)}
+function go(i){i=Math.max(0,Math.min(i,sl.length-1));deck.scrollTo({left:i*deck.clientWidth,behavior:'smooth'})}
+function upd(){var c=cur();[].forEach.call(dots.children,function(d,i){d.className=i===c?'on':''});cnt.textContent=(c+1)+' / '+sl.length}
+deck.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);
+document.getElementById('prev').onclick=function(){go(cur()-1)};
+document.getElementById('next').onclick=function(){go(cur()+1)};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(cur()+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){go(cur()-1)}else if(e.key==='Home'){go(0)}else if(e.key==='End'){go(sl.length-1)}});
+deck.addEventListener('wheel',function(e){if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){deck.scrollLeft+=e.deltaY}},{passive:true});
+upd();
+})();
+</script>
+</body>
+</html>
