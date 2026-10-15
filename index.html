@@ -57,16 +57,57 @@ hr.g{width:90px;border:0;border-top:4px solid var(--teal);margin:3vh 0;margin-le
 #ui>*{pointer-events:auto}
 .arrow{width:42px;height:42px;border-radius:50%;border:0;background:var(--teal);color:#fff;font-size:1.2rem;cursor:pointer}
 .arrow:hover,.arrow:focus-visible{background:var(--gold);color:var(--navy);outline:none}
+#fullscreen{width:42px;height:42px;border:0;border-radius:50%;background:var(--teal);color:#fff;font-size:1.2rem;cursor:pointer}
+#fullscreen:hover,#fullscreen:focus-visible{background:var(--gold);color:var(--navy);outline:none}
 #dots{display:flex;gap:8px;background:rgba(21,39,71,.85);padding:10px 14px;border-radius:99px}
 #dots button{width:10px;height:10px;border-radius:50%;border:0;background:#8aa0c0;padding:0;cursor:pointer}
 #dots button.on{background:var(--gold);width:26px;border-radius:6px}
 #count{position:fixed;top:calc(2.5vh + env(safe-area-inset-top,0px));right:5vw;font-size:.8rem;font-weight:600;color:var(--muted);z-index:5}
+.motion-ready .s>div{opacity:0}
+.motion-ready .s.active>div:not(.art):not(.stag){animation:slide-content-in 1.25s cubic-bezier(.18,.72,.22,1) both}
+.motion-ready .s.active>.art{animation:slide-art-in 1.45s cubic-bezier(.18,.72,.22,1) .18s both}
+.motion-ready .s.active[data-direction="backward"]>div:not(.art):not(.stag){animation-name:slide-content-back}
+.motion-ready .s.active[data-direction="backward"]>.art{animation-name:slide-art-back}
+.motion-ready .s.active>div:not(.art):not(.stag)>*{animation:detail-reveal .9s cubic-bezier(.2,.75,.25,1) .35s both}
+.motion-ready .s.active>div:not(.art):not(.stag)>*:nth-child(2){animation-delay:.52s}
+.motion-ready .s.active>div:not(.art):not(.stag)>*:nth-child(3){animation-delay:.69s}
+.motion-ready .s.active>div:not(.art):not(.stag)>*:nth-child(4){animation-delay:.86s}
+.motion-ready .s.active .stag{animation:stag-in .9s ease both}
+.motion-ready .s .grid .card{opacity:0}
+.motion-ready .s.active .grid .card{animation:card-in 1.05s cubic-bezier(.18,.72,.22,1) .5s both}
+.motion-ready .s.active .grid .card:nth-child(2){animation-delay:.72s}
+.motion-ready .s.active .grid .card:nth-child(3){animation-delay:.94s}
+.motion-ready .art{position:relative;isolation:isolate}
+.motion-ready .art:before{content:"";position:absolute;inset:12%;z-index:-1;border-radius:50%;background:radial-gradient(circle,rgba(22,145,140,.24),rgba(242,178,58,.12) 45%,transparent 72%);filter:blur(20px);animation:art-glow 5s ease-in-out infinite}
+.motion-ready .art svg>:not(defs){transform-box:fill-box;transform-origin:center;animation:graphic-in 1.15s cubic-bezier(.18,.72,.22,1) both}
+.motion-ready .art svg>:not(defs):nth-child(2){animation-delay:.18s}
+.motion-ready .art svg>:not(defs):nth-child(3){animation-delay:.34s}
+.motion-ready .art svg>:not(defs):nth-child(4){animation-delay:.5s}
+.motion-ready .art svg>:not(defs):nth-child(5){animation-delay:.66s}
+.motion-ready .art svg>:not(defs):nth-child(6){animation-delay:.82s}
+.motion-ready .art svg{animation:illustration-float 8s ease-in-out infinite}
+@keyframes slide-content-in{from{opacity:0;transform:translate3d(90px,18px,0) scale(.97);filter:blur(9px)}to{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}}
+@keyframes slide-content-back{from{opacity:0;transform:translate3d(-90px,18px,0) scale(.97);filter:blur(9px)}to{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}}
+@keyframes slide-art-in{from{opacity:0;transform:translate3d(-100px,0,0) scale(.84) rotate(-5deg);filter:blur(12px)}to{opacity:1;transform:translate3d(0,0,0) scale(1) rotate(0);filter:blur(0)}}
+@keyframes slide-art-back{from{opacity:0;transform:translate3d(100px,0,0) scale(.84) rotate(5deg);filter:blur(12px)}to{opacity:1;transform:translate3d(0,0,0) scale(1) rotate(0);filter:blur(0)}}
+@keyframes detail-reveal{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes card-in{from{opacity:0;transform:translate3d(0,42px,0) scale(.9) rotate(-1deg);filter:blur(4px)}to{opacity:1;transform:translate3d(0,0,0) scale(1) rotate(0);filter:blur(0)}}
+@keyframes stag-in{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes graphic-in{from{opacity:0;transform:scale(.55) rotate(-12deg);filter:brightness(1.5) blur(5px)}to{opacity:1;transform:scale(1) rotate(0);filter:brightness(1) blur(0)}}
+@keyframes illustration-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes art-glow{0%,100%{opacity:.45;transform:scale(.88)}50%{opacity:1;transform:scale(1.08)}}
 @media (orientation:portrait),(max-width:720px){
  .s{grid-template-columns:1fr;grid-template-rows:auto 1fr;overflow-y:auto;align-items:start;padding:8vh 6vw 14vh}
  .art{order:-1;height:22vh}
  .s h1{font-size:2.4rem}
 }
-@media (prefers-reduced-motion:reduce){#deck{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){
+ #deck{scroll-behavior:auto}
+ .motion-ready .s>div,.motion-ready .s .grid .card{opacity:1}
+ .motion-ready .s.active>div:not(.stag),.motion-ready .s.active>div:not(.art):not(.stag),.motion-ready .s.active>div:not(.art):not(.stag)>*,.motion-ready .s.active .stag,.motion-ready .s.active .grid .card,.motion-ready .art svg>:not(defs){animation:none;filter:none;transform:none}
+ .motion-ready .art:before{animation:none;opacity:.45}
+ .motion-ready .art svg{animation:none}
+}
 </style>
 </head>
 <body>
@@ -80,7 +121,7 @@ hr.g{width:90px;border:0;border-top:4px solid var(--teal);margin:3vh 0;margin-le
 
 <section class="s dark" id="home">
 <div><div class="org">Yuwa Sarathi | Trainer's Message</div><h1>Think. Believe.<br>Grow.</h1>
-<div class="pills">Imagination • Confidence • Morale • Positive Attitude</div>
+<div class="pills">Imagination • Confidence • Moral • Positive Attitude</div>
 <div class="np dv">सिकौँ, सोचौँ, आत्मविश्वासका साथ अघि बढौँ।</div><div class="sub dv">सक्षम युवा • सकारात्मक समाज</div></div>
 <div class="art"><svg viewBox="0 0 400 400" role="img" aria-label="Steps leading up to a flag"><circle cx="290" cy="110" r="80" fill="#16918c"/><circle cx="360" cy="215" r="24" fill="#f2b23a"/><circle cx="190" cy="250" r="120" fill="#21436e"/><path d="M50 350h75v-55h75v-55h75v-55h75v-55" stroke="#f2b23a" stroke-width="12" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M350 130V70" stroke="#fff" stroke-width="6"/><path d="M350 70l38 14-38 14z" fill="#f2b23a"/></svg></div>
 </section>
@@ -150,19 +191,23 @@ hr.g{width:90px;border:0;border-top:4px solid var(--teal);margin:3vh 0;margin-le
 </section>
 </main>
 
-<div id="ui"><button class="arrow" id="prev" aria-label="Previous slide">&#8592;</button><div id="dots"></div><button class="arrow" id="next" aria-label="Next slide">&#8594;</button></div>
+<div id="ui"><button class="arrow" id="prev" aria-label="Previous slide">&#8592;</button><div id="dots"></div><button class="arrow" id="next" aria-label="Next slide">&#8594;</button><button id="fullscreen" type="button" aria-label="Enter full screen" aria-pressed="false" title="Enter full screen">&#x26F6;</button></div>
 
 <script>
 (function(){
-var deck=document.getElementById('deck'),sl=[].slice.call(deck.children),dots=document.getElementById('dots'),cnt=document.getElementById('count');
+var deck=document.getElementById('deck'),sl=[].slice.call(deck.children),dots=document.getElementById('dots'),cnt=document.getElementById('count'),fullscreen=document.getElementById('fullscreen');
 sl.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Go to slide '+(i+1));b.onclick=function(){go(i)};dots.appendChild(b)});
 function cur(){return Math.round(deck.scrollLeft/deck.clientWidth)}
 function go(i){i=Math.max(0,Math.min(i,sl.length-1));deck.scrollTo({left:i*deck.clientWidth,behavior:'smooth'})}
-function upd(){var c=cur();[].forEach.call(dots.children,function(d,i){d.className=i===c?'on':''});cnt.textContent=(c+1)+' / '+sl.length}
+var lastSlide=0;
+function upd(){var c=cur(),direction=c>=lastSlide?'forward':'backward';sl.forEach(function(s,i){if(i===c)s.dataset.direction=direction;s.classList.toggle('active',i===c)});lastSlide=c;[].forEach.call(dots.children,function(d,i){d.className=i===c?'on':''});cnt.textContent=(c+1)+' / '+sl.length;document.body.classList.add('motion-ready')}
+function updateFullscreen(){var active=!!document.fullscreenElement;fullscreen.setAttribute('aria-pressed',String(active));fullscreen.setAttribute('aria-label',active?'Exit full screen':'Enter full screen');fullscreen.title=active?'Exit full screen':'Enter full screen'}
+fullscreen.onclick=function(){if(document.fullscreenElement){document.exitFullscreen().catch(function(error){console.error('Could not exit full screen:',error)})}else if(document.documentElement.requestFullscreen){document.documentElement.requestFullscreen().catch(function(error){console.error('Could not enter full screen:',error)})}};
+document.addEventListener('fullscreenchange',updateFullscreen);
 deck.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);
 document.getElementById('prev').onclick=function(){go(cur()-1)};
 document.getElementById('next').onclick=function(){go(cur()+1)};
-document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(cur()+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){go(cur()-1)}else if(e.key==='Home'){go(0)}else if(e.key==='End'){go(sl.length-1)}});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(cur()+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){go(cur()-1)}else if(e.key==='Home'){go(0)}else if(e.key==='End'){go(sl.length-1)}else if(e.key.toLowerCase()==='f'&&!e.ctrlKey&&!e.altKey&&!e.metaKey){fullscreen.click()}});
 deck.addEventListener('wheel',function(e){if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){deck.scrollLeft+=e.deltaY}},{passive:true});
 upd();
 })();
